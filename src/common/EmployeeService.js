@@ -1,10 +1,10 @@
 export default class EmployeeService {
   static findList() {
-    return this.empList;
+    return this.empList.slice();
   }
 
   static find(id) {
-    return this.empList.find(emp => emp.id === id);
+    return Object.assign({}, this.empList.find(x => x.id === id));
   }
 
   static create(emp) {
@@ -12,16 +12,11 @@ export default class EmployeeService {
   }
 
   static update(emp) {
-    this.empList = this.empList.map(x => (x.emp.id === emp.id ? emp : x));
-    // let target = this.empList.find(e => e.id === emp.id);
-    // if (target) {
-    //   target = emp;
-    // }
+    this.empList = this.empList.map(x => (x.id === emp.id ? emp : x));
   }
 
   static delete(id) {
-    const tmp = this.empList;
-    this.empList = tmp.filter(emp => emp.id !== id);
+    this.empList = this.empList.filter(x => x.id !== id);
   }
 
   static empList = [

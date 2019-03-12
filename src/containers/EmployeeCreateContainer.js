@@ -2,11 +2,12 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addEmp } from "../actions";
+import EmployeeService from "../common/EmployeeService";
 
 export class EmployeeCreateContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { id: "", name: "", age: "", sex: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -89,7 +90,7 @@ export class EmployeeCreateContainer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    //    EmployeeService.create(this.state); // これどこでやる?
+    EmployeeService.create(this.state);
     this.props.dispatch(addEmp(this.state));
     if (window.confirm(JSON.stringify(this.state))) {
       this.props.history.push("/");

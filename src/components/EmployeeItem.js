@@ -27,7 +27,6 @@ export default class EmployeeItem extends React.Component {
   }
 }
 
-// 型チェックの仕組みは、他にもFlow, TypeScriptなどの選択の余地がある
 EmployeeItem.propTypes = {
   emp: PropTypes.shape({
     id: PropTypes.string.isRequired,

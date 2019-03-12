@@ -1,5 +1,7 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { updateEmp } from "../actions";
 import EmployeeService from "../common/EmployeeService";
 
 export class EmployeeUpdateContainer extends React.Component {
@@ -91,10 +93,11 @@ export class EmployeeUpdateContainer extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     EmployeeService.update(this.state);
+    this.props.dispatch(updateEmp(this.state));
     if (window.confirm(JSON.stringify(this.state))) {
       this.props.history.push("/");
     }
   }
 }
 
-export default withRouter(EmployeeUpdateContainer);
+export default connect()(withRouter(EmployeeUpdateContainer));
