@@ -3,16 +3,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export default class EmployeeItem extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleDelete = this.handleDelete.bind(this);
-  // }
-
-  // // 親のstateを変更するため、propsとして関数をもらってそれを呼び出す
-  // handleDelete() {
-  //   this.props.onDelete(this.props.emp.id);
-  // }
-
   render() {
     return (
       <tr>
@@ -42,7 +32,7 @@ EmployeeItem.propTypes = {
   emp: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired,
+    age: PropTypes.string.isRequired,
     sex: PropTypes.string.isRequired
   }).isRequired,
   onDelete: PropTypes.func.isRequired

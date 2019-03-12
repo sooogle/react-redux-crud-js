@@ -2,10 +2,10 @@ import * as React from "react";
 import { withRouter } from "react-router-dom";
 import EmployeeService from "../common/EmployeeService";
 
-export class EmployeeCreate extends React.Component {
+export class EmployeeUpdateContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = EmployeeService.find(this.props.match.params.id);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -60,6 +60,7 @@ export class EmployeeCreate extends React.Component {
                 type="radio"
                 name="sex"
                 value="1"
+                checked={this.state.sex === "1"}
                 onChange={this.handleChange}
               />
               男
@@ -69,6 +70,7 @@ export class EmployeeCreate extends React.Component {
                 type="radio"
                 name="sex"
                 value="2"
+                checked={this.state.sex === "2"}
                 onChange={this.handleChange}
               />
               女
@@ -88,11 +90,11 @@ export class EmployeeCreate extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    EmployeeService.create(this.state);
+    EmployeeService.update(this.state);
     if (window.confirm(JSON.stringify(this.state))) {
       this.props.history.push("/");
     }
   }
 }
 
-export default withRouter(EmployeeCreate);
+export default withRouter(EmployeeUpdateContainer);

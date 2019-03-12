@@ -40,7 +40,7 @@ EmployeeList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      age: PropTypes.number.isRequired,
+      age: PropTypes.string.isRequired,
       sex: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
