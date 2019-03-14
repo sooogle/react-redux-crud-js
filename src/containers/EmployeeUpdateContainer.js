@@ -94,9 +94,7 @@ export class EmployeeUpdateContainer extends React.Component {
     e.preventDefault();
     EmployeeService.update(this.state);
     this.props.dispatch(updateEmp(this.state));
-    if (window.confirm(JSON.stringify(this.state))) {
-      this.props.history.push("/");
-    }
+    this.props.history.push("/");
   }
 }
 

@@ -92,9 +92,7 @@ export class EmployeeCreateContainer extends React.Component {
     e.preventDefault();
     EmployeeService.create(this.state);
     this.props.dispatch(addEmp(this.state));
-    if (window.confirm(JSON.stringify(this.state))) {
-      this.props.history.push("/");
-    }
+    this.props.history.push("/");
   }
 }
 
